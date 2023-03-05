@@ -1,0 +1,44 @@
+ДОБАВИТЬ
+
+fetch(
+  '/api/v1/fines', 
+  { 
+    method: 'POST', 
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id: 1, car: "Н465КУ", violator: "Лях Глеб Владимирович", officer: "Медведев Денис Михайлович", date: "01.01.2022", amount: "3000", datePaid: "", dateToPay: "01.02.2022", isSubpoena: "False", isPaid: "False"})
+  }
+).then(result => result.json().then(console.log))
+
+ПОЛУЧИТЬ ВСЕ
+
+fetch('/api/v1/fines').then(response => response.json().then(console.log))
+
+ПАТЧ ПОВЕСТКА
+
+fetch('/api/v1/fines/1/court', { method: 'PATCH', })
+
+ПАТЧ ОПЛАТИТЬ
+
+fetch('/api/v1/fines/1/pay', { method: 'PATCH', })
+
+ОБНОВИТЬ
+
+fetch(
+  '/api/v1/fines', 
+  { 
+    method: 'PUT', 
+    headers: { 'Content-Type': 'application/json' }, 
+    body: JSON.stringify({ id: 1, car: "Н465КУ", violator: "Лях Глеб Владимирович", officer: "Медведев Денис Михайлович", date: "01.01.2022", amount: "3000", datePaid: "15.01.2022", dateToPay: "01.02.2022", isSubpoena: "True", isPaid: "True"})
+  }
+).then(result => result.json().then(console.log));
+
+УДАЛИТЬ
+
+fetch(
+  '/api/v1/fines', 
+  { 
+    method: 'DELETE', 
+    headers: { 'Content-Type': 'application/json' }, 
+    body: JSON.stringify(1)
+  }
+)
